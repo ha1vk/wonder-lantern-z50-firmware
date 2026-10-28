@@ -1,5 +1,7 @@
 # Wonder Lantern Z50
 
+[English](README_EN.md) | 简体中文
+
 适用于 **Nikon Z50（一代）**、固件 **C 2.60**（主模块 `eg1630_026000.bi`）的自定义快门声音补丁固件。
 
 > ⚠️ **仅适用于尼康 Z50 一代 + C 2.60 固件**。其他机型（Z30/Zfc/Z6/Z7/Z8/Z9、Z50 二代）或其他固件版本刷入可能直接变砖。
@@ -11,13 +13,13 @@
 
 ## 功能
 
-- 设置菜单（扳手 SETUP 菜单最后一行）出现 **Shutter sound** 入口：
+- 设置菜单（扳手 SETUP 菜单最后一行）出现 **快门声音** 入口：
 
   ```text
-  Enabled          OFF / ON
-  Sound file       None / SHUTTER.WAV / 1.WAV..4.WAV
-  Preview sound    （试听，OFF 时也可用）
-  Reload sound     （重新从 SD 卡加载当前文件）
+  启用声音         关闭 / 开启
+  声音文件         未选择 / SHUTTER.WAV / 1.WAV..4.WAV
+  播放声音         （试听，关闭时也可用）
+  重新加载         （重新从 SD 卡加载当前文件）
   ```
 
 - 界面跟随机身语言（简中/繁中/英文）
@@ -27,7 +29,7 @@
 
 自定义声音**只在同时满足以下条件时触发**：
 
-1. 本功能 `Enabled = ON`（且已选择有效的声音文件）
+1. 本功能 `启用声音 = 开启`（且已选择有效的声音文件）
 2. 相机已开启 **静音拍摄（Silent photography = ON）**
 3. 实际拍照（半按/录像等状态不会触发）
 
@@ -39,15 +41,15 @@ SD 卡布局（文件名固定，大小写不敏感）：
 
 ```text
 SD 卡根目录
-├── SHUTTER.WAV          （Sound file 第 1 项：SHUTTER.WAV）
+├── SHUTTER.WAV          （声音文件 第 1 项：SHUTTER.WAV）
 └── SHUTTER/             （文件夹）
-    ├── 1.WAV            （Sound file 第 2 项：1.WAV）
-    ├── 2.WAV            （Sound file 第 3 项：2.WAV）
-    ├── 3.WAV            （Sound file 第 4 项：3.WAV）
-    └── 4.WAV            （Sound file 第 5 项：4.WAV）
+    ├── 1.WAV            （声音文件 第 2 项：1.WAV）
+    ├── 2.WAV            （声音文件 第 3 项：2.WAV）
+    ├── 3.WAV            （声音文件 第 4 项：3.WAV）
+    └── 4.WAV            （声音文件 第 5 项：4.WAV）
 ```
 
-除根目录 `SHUTTER.WAV` 外，`SHUTTER` 文件夹内可放置 `1.WAV`、`2.WAV`、`3.WAV`、`4.WAV` 共 4 个文件，在菜单的 `Sound file` 中选择。每个文件格式要求：
+除根目录 `SHUTTER.WAV` 外，`SHUTTER` 文件夹内可放置 `1.WAV`、`2.WAV`、`3.WAV`、`4.WAV` 共 4 个文件，在菜单的 `声音文件` 中选择。每个文件格式要求：
 
 - 标准 44 字节 WAV 头（无额外 chunk）
 - PCM 无压缩（format=1）、**单声道**、**8000 Hz**、**16-bit signed little-endian**
@@ -65,11 +67,11 @@ python3 prepare_wav.py 你的声音.wav 1.WAV
 ## 使用流程
 
 1. 处理好 `SHUTTER.WAV`，放到 **SD 卡根目录**
-2. 插卡开机 → 菜单 → SETUP 菜单 → Shutter sound
-3. `Sound file` 选择 `SHUTTER.WAV`（选完不自动开启声音，也不自动播放）
-4. `Enabled` → ON（保存到 `WL-SOUND.CFG`；失败会提示，RAM 中当前声音仍可用于本次开机）
+2. 插卡开机 → 菜单 → SETUP 菜单 → 快门声音
+3. `声音文件` 选择 `SHUTTER.WAV`（选完不自动开启声音，也不自动播放）
+4. `启用声音` → 开启（保存到 `WL-SOUND.CFG`；失败会提示，RAM 中当前声音仍可用于本次开机）
 5. 开启相机静音拍摄 → 拍照 → 自定义快门声
-6. `Preview sound` 随时试听；更换文件后用 `Reload sound` 重载
+6. `播放声音` 随时试听；更换文件后用 `重新加载` 重载
 
 ## 刷入方法
 
@@ -79,7 +81,7 @@ python3 prepare_wav.py 你的声音.wav 1.WAV
 2. 将本固件文件`eg1630_026000_patch.bin`放到 **SD 卡根目录**
 3. 相机 `SETUP 菜单 → 固件版本` → 选择更新 → 确认刷入
 4. 更新过程不可断电、不可拔卡；完成后相机自动重启
-5. 验证：`SETUP 菜单 → 固件版本` 显示版本号后，进入 SETUP 菜单最后一行应出现 `Shutter sound`
+5. 验证：`SETUP 菜单 → 固件版本` 显示版本号后，进入 SETUP 菜单最后一行应出现 `快门声音`
 
 > 还原：将原厂 C 2.60 固件包放回 SD 卡，用同样的菜单更新流程刷回官方版本即可。
 
