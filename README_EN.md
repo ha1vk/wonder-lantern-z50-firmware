@@ -10,6 +10,7 @@ Custom shutter-sound patch firmware for the **Nikon Z50 (first generation)** run
 ## Porting status
 - Contains only the **shutter-sound (custom electronic shutter sound)** feature
 - Custom menu now has Chinese labels
+- Added function to view shutter count information
 
 ## Features
 
